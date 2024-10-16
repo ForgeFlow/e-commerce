@@ -37,7 +37,7 @@ class CheckoutSkipPaymentWebsite(WebsiteSale):
                 "website_sale_checkout_skip_payment.confirmation_order_error"
             )
         # This could not finish (e.g.: sale_financial_risk exceeded)
-        order.action_confirm()
+        # order.action_confirm()
         request.website.sale_reset()
         return request.render(
             "website_sale.confirmation",
