@@ -28,6 +28,9 @@ class TestFrontend(HttpCase):
                 "padding": 3,
             }
         )
+        self.journal = self.env["account.journal"].search(
+            [("type", "=", "sale")], limit=1
+        )
         self.warehouse = self.env.ref("stock.warehouse0")
         self.immediate_payment = self.env.ref("account.account_payment_term_immediate")
         self.sale_pricelist = self.env.ref("product.list0")
@@ -36,6 +39,7 @@ class TestFrontend(HttpCase):
             {
                 "name": "Test Sale Order Type",
                 "sequence_id": self.sequence.id,
+                "journal_id": self.journal.id,
                 "warehouse_id": self.warehouse.id,
                 "picking_policy": "one",
                 "payment_term_id": self.immediate_payment.id,
